@@ -1,0 +1,20 @@
+Ejercicio 1 - monitor
+
+El sistema es un videojuego de aviones que pasan sobre un campo y tiran cajas.
+Hay 20 aviones y 100 cajas
+
+Los aviones despegan y reciben un ataque de parte del enemigo. Si el ataque es efectivo el avion es destruido. Si no es efectivo, el avion tira dos cajas y vuelve a la base para volver a hacer el recorrido anterior.
+
+hay 5 aviones al mismo tiempo
+
+El juego termina cuando los aviones son destruidos o cuando ya no quedan cajas
+
+
+
+
+
+
+
+Ejercicio 2 - mensajes
+
+Hay N agentes en circulo que se pasan que se pasan un token. Un agente(1) espera a recibir un token. Cuando recibe el token, se lo pasa al agente(2) de la derecha. El primer agente se queda esperando a que el segundo agente reciba el mensaje. Cuando lo recibe, el agente 1 se queda bloqueado y el 2 le manda el token al de la derecha y asi sucesivamente.

@@ -1,0 +1,31 @@
+# Programa
+
+- **Linux:**
+  - Averiguar distros
+  - Ver comandos básicos
+  - Compresores de archivos
+  - Instalar 3 distros diferentes
+  - probarlas y debatir cual usar
+  - ecritorios
+  - terminales
+- **Pagina de presentación:**
+  - elegir alguna tech para el back (sin mucha importancia)
+  - Sus proyectos
+  - Sus habilidades
+  - Algo personal
+  - Su curriculum
+  - Su contacto
+  - editores de texto
+- **Proyecto personal:**
+  - elegir que proyecto hacer
+  - elegir techs a usar a conciencia
+  - elegir algun framework para hacerlo
+  - aprender a usar git
+  - empezar a hacer buenas practicas
+- **Virtualización:**
+  - usar el proyecto ya creado y dockerizrlo
+  - subir la imagen a docker hub de forma privada
+- **Proyecto en conjunto:**
+  - hacer propuestas y decidir cual
+  - analizar el proyecto a profundidad
+  - definir techs a utilzar

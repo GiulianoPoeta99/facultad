@@ -1,0 +1,36 @@
+nroContainers:semaphore(n);
+hayLugar:semaphore(10);
+hayContainer:semaphore(0);
+mutex:semaphore(1);
+
+process cargador[1]
+begin
+while (true) do
+	wait(nroContainers);
+	wait(hayLugar);
+	ponercontainer;
+	wait(mutex);
+	containerenmuelle++;
+	signal(mutex);
+	signal(hayContainer);
+end;
+
+
+process grua;
+begin
+while true do
+	wait(hayContainer);
+	cargaContainer;
+	wait(mutex);
+	containersEnMuelle--;
+	signal(mutex);
+	signal(hayLugar);
+end;
+
+//programa principal
+
+cobegin
+	cargador[1];
+	cargador[2];
+	grua;
+coend;

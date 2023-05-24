@@ -1,0 +1,131 @@
+PROGRAMA AKSDJFHN
+	subprogramas
+		procedimiento contesq (sa papelesq:numero; sa floresq:numero)
+			variables
+			papelaux:numero
+			floraux:numero
+			comenzar
+				papelaux:=0
+				floraux:=0
+				mientras (hayflorenlaesquina)
+					comenzar
+						tomarpapel
+						papelaux:=papelaux+1
+					fin
+				repetir papelaux
+					depositarpapel
+				mientras (hayflorenlaesquina)
+					comenzar
+						tomarflor
+						floraux:=floraux+1
+					fin
+				repetir floraux
+					depositarflor
+				papelesq:= papelaux
+				floresq:= floraux
+			fin
+		procedimiento contbolsa (sa papelbols:numero; sa florbols: numero)
+			variables
+			papelaux:numero
+			floraux:numero
+			comenzar
+				papelaux:=0
+				floraux:=0
+					mientras (haypapelenlabolsa)
+						comenzar
+							depositarpapel
+							papelaux:= papelaux+1
+						fin
+					repetir papelaux
+						tomarpapel
+					mientras (hayflorenlabolsa)
+						comenzar
+							depositarflor
+							floraux:=floraux+1
+						fin
+						repetir floraux
+							tomarflor
+						papelbols:=papelaux
+						florbols:=floraux
+					fin
+			procedimiento condiciones (en esqpapel:numero;en esqflor:numero;en blspapel:numero;en blsflor;sa cumple:logico)
+				variables
+				papele:numero
+				flore:numero
+				papalb:numero
+				florb:numero
+				completado:logico
+				comenzar
+				papele:esqpapel
+				flore:esqflor
+				papalb:blspapel
+				florb:blsflor
+				depositar:0
+				completado:f
+				si (flore>papele)
+					comenzar
+						depositar:= flore-papele
+						si (papelb>=depositar)
+							repetir depositar
+								comenzar
+									depositarpapel
+									papelb:= papelb-1
+								fin
+							completado:= v
+					fin
+				si (papele>flore)
+					comenzar
+						depositar:= papele-flore
+						si (florb>=depositar)
+							repetir depositar
+								comenzar
+									depositarflor
+									florb:= florb-1
+								fin
+							completado:= v
+					fin
+				si (flore=papele)
+					comenzar
+						si (florb>=1)
+							comenzar
+								depositarflor
+								florb:=florb-1
+								completado:= v
+							fin
+					fin
+				cumple:= completado
+			fin
+		variables
+		papelesesquina:numero
+		floresquina:numero
+		papelesbolsa:numero
+		floresbolsa:numero
+		cumple:logico
+		complicado:numero
+		comenzar
+			cumple:= v
+			completos:=0
+			mientras (posca<=9 & cumple)
+				comenzar
+					papelesesqina:=0
+					floresesquina:=0
+					contesq (papelesesquina,floresesquina,)
+					contbolsa (papelesbolsa,floresbolsa)
+					condiciones (papelesesquina,floresesquina,papelesbolsa,floresbolsa,cumple)
+					si (cumple)
+						completos:= completos+1
+				fin
+			si (completos <> 9)
+				pos(1,9)
+			si (posca=10)
+					comenzar
+						papelesesqina:=0
+						floresesquina:=0
+						contesq (papelesesquina,floresesquina,)
+						contbolsa (papelesbolsa,floresbolsa)
+						condiciones (papelesesquina,floresesquina,papelesbolsa,floresbolsa,cumple)
+						si (cumple)
+							completos:= completos+1
+					fin
+			informar (completas)
+		fin
