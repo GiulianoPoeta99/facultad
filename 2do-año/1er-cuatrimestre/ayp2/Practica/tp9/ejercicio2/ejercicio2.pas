@@ -1,10 +1,12 @@
 {
-    Realice un procedimiento iterativo y uno recursivo que devuelva el resultado de la suma de una lista de enteros. 
+    Escribir una FUNCIÓN de tipo puntero que explore una lista en busca de un entero dado y 
+    devuelva NIL si el entero no se encuentra en la lista o el puntero al nodo donde está el 
+    entero buscado.  
 }
 program ejercicio1;
 uses crt, UListaEnteros;
 
-procedure cargarListaEnteros(var lista: TLista);
+procedure cargarLista(var lista: TLista);
 var
     seguirCargando: char;
     numero: TElemento;
@@ -13,7 +15,7 @@ begin
     crear(lista);
     while (seguirCargando = 's') do 
     begin
-        writeln('Ingrese un numero: ');
+        writeln('Ingrese un elemento: ');
         readln(numero);
         insertar(lista,numero);
         writeln('Quiere ingresar otro?  s/n');
@@ -22,39 +24,39 @@ begin
     writeln('isto');
 end;
 
-function sumarIterativo(lista: TLista): integer;
-var
-    suma: integer;
+function buscarPuntero(lista: TLista; elemento: TElemento): Tlista;
 begin
-    suma := 0;
-    while (lista <> nil) do
+    buscarPuntero := nil;
+    lista := lista^.siguiente;
+    while ((lista <> nil) and (buscarPuntero = nil)) do 
     begin
-        suma := suma + lista^.info;
-        lista := lista^.siguiente;
+        writeln('debug: while');
+        if (elemento <> lista^.info) then
+        begin
+            lista := lista^.siguiente;
+        end
+        else
+        begin
+            buscarPuntero := lista;
+        end;
     end;
-    sumarIterativo := suma;
 end;
 
-function sumarRecursivo(lista: TLista): integer;
+var
+    lista, puntero: TLista;
+    elemento: TElemento;
 begin
-    if (lista = nil) then 
+    cargarLista(lista);
+    writeln('Ingrese un elemento para buscar su puntero: ');
+    readln(elemento);
+    writeln('Buscando elemento...');
+    puntero := buscarPuntero(lista,elemento);
+    if (puntero = nil) then
     begin
-        sumarRecursivo := 0;
+        writeln('No se encontro el elemento.');
     end
     else 
     begin
-        sumarRecursivo := lista^.info + sumarRecursivo(lista^.siguiente);
-        writeln(sumarRecursivo);
+        writeln('El elemento se encontro y es el ',puntero^.info);
     end;
-end;
-
-var
-    lista: TLista;
-    sumaIterativa, sumaRecursiva: integer;
-begin
-    cargarListaEnteros(lista);
-    sumaIterativa := sumarIterativo(lista); 
-    sumaRecursiva := sumarRecursivo(lista);
-    writeln('El reultado de la suma iterativa es: ', sumaIterativa);
-    writeln('El reultado de la suma recursiva es: ', sumaRecursiva);
 end.

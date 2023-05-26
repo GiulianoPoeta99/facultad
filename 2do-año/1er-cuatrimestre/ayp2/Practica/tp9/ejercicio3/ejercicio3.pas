@@ -1,65 +1,57 @@
 {
-    Escribir una FUNCIÓN de tipo puntero que explore una lista en busca de un entero dado y 
-    devuelva NIL si el entero no se encuentra en la lista o el puntero al nodo donde está el 
-    entero buscado.  
+    Escribir un programa en Pascal que genere una lista de NODOS que contengan los 20 
+    primeros términos de la serie de Fibonacci. 
+    
+    Escribir luego una función que devuelva el primer elemento de la serie que sea mayor que 
+    un número N dado.
 }
-program ejercicio1;
+program ejercicio4;
 uses crt, UListaEnteros;
 
-procedure cargarLista(var lista: TLista);
+procedure crearListaFibonacci(var lista: TLista);
 var
-    seguirCargando: char;
-    numero: TElemento;
+    n1, n2, aux, i: integer;
 begin
-    seguirCargando := 's';
     crear(lista);
-    while (seguirCargando = 's') do 
+    n1 := 0;
+    n2 := 1;
+    insertar(lista,n1);
+    insertar(lista,n2);
+    for i:=3 to 20 do
     begin
-        writeln('Ingrese un elemento: ');
-        readln(numero);
-        insertar(lista,numero);
-        writeln('Quiere ingresar otro?  s/n');
-        readln(seguirCargando);
+        aux := n1 + n2;
+        insertar(lista,aux);
+        // writeln(aux);
+        n1 := n2;
+        n2 := aux;
     end;
-    writeln('isto');
 end;
 
-function buscarPuntero(lista: TLista; elemento: TElemento): Tlista;
-var
-    aux: TLista;
+function buscarEementoLista(lista: TLista;  elemento: integer): integer;
 begin
-    aux := nil;
-    lista := lista^.siguiente;
-    while ((lista <> nil) and (aux = nil)) do 
+    while ((lista <> nil)) do
     begin
-        writeln('debug: while');
-        if (elemento <> lista^.info) then
-        begin
-            lista := lista^.siguiente;
-        end
-        else
-        begin
-            aux := lista;
-        end;
+        // writeln(lista^.info);
+        lista := lista^.siguiente;
     end;
-    buscarPuntero := aux;
+    buscarEementoLista := lista^.info;
 end;
 
 var
-    lista, puntero: TLista;
-    elemento: TElemento;
+    lista: TLista;
+    numeroBusq , elementoEncontrado: integer;
 begin
-    cargarLista(lista);
-    writeln('Ingrese un elemento para buscar su puntero: ');
-    readln(elemento);
-    writeln('Buscando elemento...');
-    puntero := buscarPuntero(lista,elemento);
-    if (puntero = nil) then
+    crearListaFibonacci(lista);
+    writeln('Ingrese un numero para buscar: ');
+    readln(numeroBusq);
+    writeln(lista^.info);
+    elementoEncontrado := buscarEementoLista(lista,numeroBusq);
+    if (elementoEncontrado <> -1) then 
     begin
-        writeln('No se encontro el elemento.');
+        writeln('El primer elementos mayor encontrado es: ', elementoEncontrado);
     end
     else 
     begin
-        writeln('El elemento se encontro y es el ',puntero^.info);
+        writeln('No se encontro un elemento mayor a ', numeroBusq);
     end;
 end.
