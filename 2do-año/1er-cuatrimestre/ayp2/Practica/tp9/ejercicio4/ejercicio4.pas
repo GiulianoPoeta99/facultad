@@ -15,8 +15,44 @@
     valor A para la indeterminada X (EVALUAPOLIN (PUNTERO , X) ).
 }
 program ejercicio4;
-uses crt,ULista;
+uses crt,UListaPolinomio,Math;
 
+procedure crearListaPolinomio(var lista: TLista; grado: integer);
+var
+    elemento: TElemento;
+    i: integer;
 begin
-    
+    crear(lista);
+
+    for i:=0 to grado do
+    begin
+        writeln('Ingrese el coeficiente para el exponente ', i);
+        readln(elemento.coeficiente);
+        elemento.exponente := i;
+        insertarAdelante(lista,elemento);
+    end;
+end;
+
+function calcularPolinomio(lista: TLista; valorX: integer): Extended;
+begin
+    calcularPolinomio := 0;
+    while (lista <> nil) do 
+    begin
+        calcularPolinomio := calcularPolinomio + lista^.info.coeficiente * Power(valorX,lista^.info.exponente);
+        lista := lista^.siguiente;
+    end;
+end;
+
+var
+    polinomio: TLista;
+    grado, x: integer;
+    resultado: Extended;
+begin
+    writeln('Ingrese el grado del polinomio: ');
+    readln(grado);
+    crearListaPolinomio(polinomio,grado);
+    writeln('Ingrese el valor de x para evaluar el polinomio: ');
+    readln(x);
+    resultado := calcularPolinomio(polinomio,x);
+    writeln('El valor del polinimio es: ', resultado);
 end.

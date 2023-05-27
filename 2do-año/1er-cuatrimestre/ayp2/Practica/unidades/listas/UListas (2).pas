@@ -1,4 +1,4 @@
-unit UListaEnteros; 
+Unit UListas; 
 
 interface 
 
@@ -13,18 +13,14 @@ type
 
 
 procedure crear(var lista:TLista);
-
-procedure insertar(var lista:TLista; const e:TElemento);
-
 procedure insertarAdelante(var lista:TLista; const e:TElemento);
-
+procedure insertar(var lista:TLista; const e:TElemento);
 procedure eliminar (var lista:TLista; const e:TElemento);
-
 procedure listar(lista:TLista); 
-
 function  vacia(const lista:TLista):boolean;
-
 function buscar (lista:TLista; const e: TElemento):TElemento;
+
+
 
 implementation
 
@@ -33,6 +29,15 @@ begin
     lista:= nil;  
 end;
 
+procedure insertarAdelante (var lista: TLista; const e: TElemento);
+var 
+    aux: TLista; 
+begin
+    new(aux); 
+    aux^.info:= e; 
+    aux^.siguiente:= lista; 
+    lista:= aux; 
+end;
 
 procedure insertar(var lista:TLista; const e:TElemento);
 var 
@@ -55,15 +60,6 @@ begin
     end;
 end;
 
-procedure insertarAdelante (var lista: TLista; const e: TElemento);
-var 
-    aux: TLista; 
-begin
-    new(aux); 
-    aux^.info:= e; 
-    aux^.siguiente:= lista; 
-    lista:= aux; 
-end;
 
 procedure eliminar (var lista: TLista; const e: TElemento);
 var
@@ -104,7 +100,7 @@ function vacia(const lista:TLista):boolean;
 
 function buscar (lista:TLista; const e: TElemento):TElemento;
 begin
-    while (lista <> Nil) and (lista^.info <> e) do
+    while ((lista <> Nil) and (lista^.info <> e)) do
         lista:= lista^.siguiente;
     if lista = Nil then 
         buscar := -1
@@ -112,5 +108,5 @@ begin
         buscar := lista^.info;
 end;
 
-BEGIN
+
 END.

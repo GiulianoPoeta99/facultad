@@ -29,7 +29,7 @@ end;
 
 function buscarEementoLista(lista: TLista;  elemento: integer): integer;
 begin
-    while ((lista <> nil)) do
+    while ((lista <> nil) and (lista^.info <= elemento)) do
     begin
         // writeln(lista^.info);
         lista := lista^.siguiente;
@@ -44,7 +44,7 @@ begin
     crearListaFibonacci(lista);
     writeln('Ingrese un numero para buscar: ');
     readln(numeroBusq);
-    writeln(lista^.info);
+    // writeln(lista^.info);
     elementoEncontrado := buscarEementoLista(lista,numeroBusq);
     if (elementoEncontrado <> -1) then 
     begin
