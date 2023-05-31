@@ -12,10 +12,15 @@ type
     end;
 
 procedure crear(var lista:TLista);
+
 procedure insertarAscendente (var lista: TLista; e: TElemento);
+
 procedure insertarDescendente (var lista: TLista; e: TElemento);
+
 procedure listar (lista:TLista); 
+
 procedure eliminar (var lista:TLista; const e:TElemento);
+
 function  vacia(const lista:TLista):boolean;
 
 
