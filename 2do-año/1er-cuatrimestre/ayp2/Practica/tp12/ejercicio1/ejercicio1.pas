@@ -24,14 +24,14 @@ type
     TTablaHashAbierto = array[0..MAX] of TLista;
     TTablaHashCerrado = array[0..MAX] of integer;
 
-function hashMod(clave integer): integer;
+function hashMod(clave: integer): integer;
 begin
     hashMod := (clave mod MAX) + 1;
 end;
 
-function reHashMod(clave integer): integer;
+function reHashMod(clave: integer): integer;
 begin
-    hashMod := ((clave + 3) mod MAX) + 1;
+    reHashMod := ((clave + 3) mod MAX) + 1;
 end;
 
 procedure inicializarTablaHash(var tabla:TTablaHashAbierto);
@@ -51,18 +51,11 @@ end;
 
 procedure insertarHashCerrado(var tabla: TTablaHashCerrado; claveHasheada, clave: integer);
 begin
-    if (tabla[claveHasheada] = 0) then 
+    while (tabla[claveHasheada] <> 0) do
     begin
-        tabla[claveHasheada] := clave;
-    end
-    else 
-    begin
-        while (tabla[claveHasheada] <> 0) do
-        begin
-            claveHasheada := reHashMod(clave);
-        end;
-        tabla[claveHasheada] := clave;
+        claveHasheada := reHashMod(claveHasheada);
     end;
+    tabla[claveHasheada] := clave;
 end;
 
 var
@@ -71,7 +64,8 @@ var
     clave: integer;
     claveHasheada: integer;
 begin
-    inicializarTablaHash(tabla);
+    clave := 0;
+    inicializarTablaHash(tablaHashAbierta);
     while (clave >= 0) do
     begin
         writeln('Ingrese estas claves: 620 - 735 - 66 - 47 - 87 - 90 - 126 - 140 - 145 - 153 - 177 - 285 - 393 - 395 - 467 y 566');
