@@ -43,7 +43,6 @@ end;
 
 function reHashMod(clave: integer): integer;
 begin
-    clave := clave mod 1000;
     reHashMod := ((clave + 3) mod MAX) + 1;
 end;
 
