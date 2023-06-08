@@ -204,6 +204,18 @@ begin
     end;
 end;
 
+
+//TODO: no esta compilado esto
+function recorreysumar(arbol):integer;
+begin
+    if (arbol <> nil) then
+    begin
+        izq := recorreysumar(arbol^.izq);
+        der := recorreysumar(arbol^.der);
+        recorreysumar := izq + der + arbol^.info;
+    end;
+end;
+
 procedure listarPreOrden(arbol: TArbol);
 begin
     if arbol <> nil then
