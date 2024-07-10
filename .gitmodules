@@ -1,0 +1,15 @@
+[submodule "primero"]
+	path = primero
+	url = https://github.com/GiulianoPoeta99/facultad-primero.git
+[submodule "segundo"]
+	path = segundo
+	url = https://github.com/GiulianoPoeta99/facultad-segundo.git
+[submodule "tercero"]
+	path = tercero
+	url = https://github.com/GiulianoPoeta99/facultad-tercero.git
+[submodule "cuarto"]
+	path = cuarto
+	url = https://github.com/GiulianoPoeta99/facultad-cuarto.git
+[submodule "quinto"]
+	path = quinto
+	url = https://github.com/GiulianoPoeta99/facultad-quinto.git
